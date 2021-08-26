@@ -6,17 +6,23 @@ from snacks.models import Snack
 # Create your tests here.
 
 class SnacksTests(TestCase):
+
+    def test_snack_list_template(self):
+        url = reverse('')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'snack_list.html')
+        self.assertTemplateUsed(response, 'base.html')
     
     def setUp(self):
         self.user = get_user_model().objects.create_user(
             username="tester", email="tester@email.com", password="pass")
         self.snack = Snack.objects.create(
-            name = 'Chips', rating = 10, reviewer = self.user)
+            name = 'Chips')
     
     def test_string_representation(self):
         self.assertEqual(str(self.snack), 'Chips')
 
-    def test_movie_name(self):
+    def test_snack_name(self):
         self.assertEqual(f'{self.snack.name}', 'Chips')
     
     

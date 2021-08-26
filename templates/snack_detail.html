@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-% block content %
+{% block content %}
 
     <section>
         <h2>{{ snack.name }}</h2>
@@ -8,4 +8,5 @@
         <p>{{ snack.description }}</p>
     </section>
 
-% endblock content
+    <a href="{% url 'snack_list' %}">Home</a>
+{% endblock content %}
